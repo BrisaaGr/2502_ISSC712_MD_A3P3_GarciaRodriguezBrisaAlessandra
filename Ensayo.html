@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagrama: Los 8 Científicos que Inventaron la IA Generativa</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0891b2 0%, #06b6d4 50%, #22d3ee 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .author-box {
+            text-align: right;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+            border-radius: 10px;
+            border-left: 5px solid #0891b2;
+        }
+
+        .author-box p:first-child {
+            color: #0891b2;
+            font-size: 1.1em;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .author-box p:last-child {
+            color: #0c4a6e;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin: 5px 0 0 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #0891b2;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(8, 145, 178, 0.2);
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #06b6d4;
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            font-weight: bold;
+        }
+
+        .diagram-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .central-node {
+            background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(8, 145, 178, 0.4);
+            border: 4px solid #22d3ee;
+            max-width: 900px;
+            margin: 0 auto 40px auto;
+        }
+
+        .central-node h2 {
+            font-size: 2em;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .central-node p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin: 10px 0;
+        }
+
+        .image-caption {
+            text-align: center;
+            color: #22d3ee;
+            font-style: italic;
+            margin-top: 15px;
+            font-size: 1em;
+            font-weight: 600;
+        }
+
+        .section-title {
+            background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 1.8em;
+            margin: 30px 0 20px 0;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(8, 145, 178, 0.3);
+        }
+
+        .feature-boxes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .feature-box {
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 6px solid #0891b2;
+            box-shadow: 0 5px 15px rgba(8, 145, 178, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(8, 145, 178, 0.3);
+        }
+
+        .feature-box h3 {
+            color: #0891b2;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature-box p {
+            color: #0c4a6e;
+            line-height: 1.8;
+            font-size: 1.05em;
+            margin: 12px 0;
+            text-align: justify;
+        }
+
+        .scientists-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .scientist-card {
+            background: linear-gradient(135deg, #cffafe 0%, #a5f3fc 100%);
+            padding: 25px;
+            border-radius: 15px;
+            border: 3px solid #06b6d4;
+            box-shadow: 0 5px 15px rgba(6, 182, 212, 0.3);
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .scientist-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 25px rgba(6, 182, 212, 0.4);
+            border-color: #0891b2;
+        }
+
+        .scientist-number {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: #0891b2;
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.3em;
+            box-shadow: 0 3px 10px rgba(8, 145, 178, 0.4);
+        }
+
+        .scientist-icon {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .scientist-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #0891b2;
+            box-shadow: 0 5px 15px rgba(8, 145, 178, 0.25);
+            transition: transform 0.3s;
+        }
+
+        .scientist-photo:hover {
+            transform: scale(1.08);
+        }
+
+        .company-photo {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #0ea5e9;
+            box-shadow: 0 5px 15px rgba(14, 165, 233, 0.25);
+            transition: transform 0.3s;
+            background-color: #fff; /* útil si el logo tiene fondo transparente */
+        }
+
+        .company-photo:hover {
+            transform: scale(1.08);
+        }
+
+
+        .scientist-card h3 {
+            color: #0891b2;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .scientist-card p {
+            color: #0c4a6e;
+            line-height: 1.7;
+            margin: 8px 0;
+            font-size: 1.02em;
+        }
+
+        .scientist-card strong {
+            color: #0891b2;
+        }
+
+        .timeline-section {
+            margin: 40px 0;
+            padding: 30px;
+            background: #f0fdfa;
+            border-radius: 15px;
+            border: 3px solid #06b6d4;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 25px;
+            margin: 25px 0;
+            padding: 25px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(8, 145, 178, 0.15);
+            border-left: 5px solid #0891b2;
+        }
+
+        .timeline-year {
+            background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 1.3em;
+            min-width: 120px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(8, 145, 178, 0.3);
+        }
+
+        .timeline-content {
+            flex: 1;
+        }
+
+        .timeline-content h4 {
+            color: #0891b2;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .timeline-content p {
+            color: #0c4a6e;
+            line-height: 1.8;
+            font-size: 1.05em;
+            text-align: justify;
+        }
+
+        .companies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .company-card {
+            background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(8, 145, 178, 0.3);
+            transition: all 0.3s;
+        }
+
+        .company-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(8, 145, 178, 0.4);
+        }
+
+        .company-icon {
+            margin-bottom: 15px;
+        }
+
+        .company-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .company-card p {
+            line-height: 1.7;
+            font-size: 1.05em;
+        }
+
+        .impact-section {
+            background: linear-gradient(135deg, #22d3ee 0%, #06b6d4 100%);
+            padding: 35px;
+            border-radius: 20px;
+            margin: 40px 0;
+            color: white;
+            box-shadow: 0 10px 30px rgba(34, 211, 238, 0.3);
+        }
+
+        .impact-section h2 {
+            font-size: 2em;
+            margin-bottom: 25px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .impact-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+        }
+
+        .impact-item {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border-left: 5px solid #fbbf24;
+            line-height: 1.8;
+            font-size: 1.05em;
+        }
+
+        .impact-item strong {
+            color: #fbbf24;
+            font-size: 1.1em;
+        }
+
+        .references-section {
+            background: #f0fdfa;
+            padding: 35px;
+            border-radius: 15px;
+            margin-top: 40px;
+            border: 3px solid #0891b2;
+        }
+
+        .references-section h2 {
+            color: #0891b2;
+            font-size: 2em;
+            margin-bottom: 30px;
+            text-align: center;
+            text-transform: uppercase;
+            border-bottom: 3px solid #06b6d4;
+            padding-bottom: 15px;
+        }
+
+        .reference-item {
+            background: white;
+            padding: 18px;
+            margin: 15px 0;
+            border-radius: 10px;
+            border-left: 5px solid #06b6d4;
+            box-shadow: 0 2px 8px rgba(8, 145, 178, 0.1);
+            line-height: 1.9;
+            color: #0c4a6e;
+            font-size: 1em;
+        }
+
+        .reference-item:hover {
+            background: #e0f2fe;
+            transform: translateX(8px);
+            transition: all 0.3s;
+        }
+
+        .conclusion-box {
+            background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
+            color: white;
+            padding: 35px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 40px;
+            box-shadow: 0 10px 30px rgba(8, 145, 178, 0.3);
+        }
+
+        .conclusion-box h2 {
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        .conclusion-box .quote {
+            font-size: 2em;
+            font-style: italic;
+            margin: 25px 0;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .conclusion-box p {
+            font-size: 1.2em;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 1024px) {
+            .scientists-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .impact-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .scientists-grid,
+            .feature-boxes,
+            .companies-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline-item {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="author-box">
+            <p>Elaborado por:</p>
+            <p>Brisa Alessandra García Rodríguez</p>
+        </div>
+
+        <h1>Los 8 Científicos que Inventaron la IA Generativa</h1>
+
+        <!-- NODO CENTRAL -->
+        <div class="central-node">
+            <h2>⚡ LA REVOLUCIÓN DEL TRANSFORMER ⚡</h2>
+            <p style="margin-top: 20px; font-size: 1.15em;">Esta investigación presentó una arquitectura completamente nueva que se basa únicamente en mecanismos de atención, eliminando por completo las redes neuronales recurrentes y las convoluciones. Este cambio revolucionario permitió que las máquinas procesaran el lenguaje de una forma mucho más eficiente y comprensiva, transformando para siempre el campo de la inteligencia artificial.</p>
+            
+            <div style="margin-top: 25px;">
+                <svg width="600" height="220" viewBox="0 0 600 220" style="max-width: 100%; height: auto;">
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#22d3ee;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#0891b2;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    
+                    <!-- Input -->
+                    <rect x="40" y="160" width="110" height="40" fill="url(#grad1)" rx="8"/>
+                    <text x="95" y="185" text-anchor="middle" fill="white" font-size="16" font-weight="bold">INPUT</text>
+                    
+                    <!-- Encoder Stack -->
+                    <rect x="190" y="90" width="90" height="110" fill="url(#grad1)" rx="8"/>
+                    <text x="235" y="115" text-anchor="middle" fill="white" font-size="14" font-weight="bold">ENCODER</text>
+                    <text x="235" y="135" text-anchor="middle" fill="white" font-size="11">Multi-Head</text>
+                    <text x="235" y="150" text-anchor="middle" fill="white" font-size="11">Attention</text>
+                    <text x="235" y="170" text-anchor="middle" fill="white" font-size="11">Feed</text>
+                    <text x="235" y="183" text-anchor="middle" fill="white" font-size="11">Forward</text>
+                    
+                    <!-- Decoder Stack -->
+                    <rect x="320" y="90" width="90" height="110" fill="url(#grad1)" rx="8"/>
+                    <text x="365" y="115" text-anchor="middle" fill="white" font-size="14" font-weight="bold">DECODER</text>
+                    <text x="365" y="135" text-anchor="middle" fill="white" font-size="11">Masked</text>
+                    <text x="365" y="148" text-anchor="middle" fill="white" font-size="11">Attention</text>
+                    <text x="365" y="168" text-anchor="middle" fill="white" font-size="11">Cross</text>
+                    <text x="365" y="183" text-anchor="middle" fill="white" font-size="11">Attention</text>
+                    
+                    <!-- Output -->
+                    <rect x="450" y="160" width="110" height="40" fill="url(#grad1)" rx="8"/>
+                    <text x="505" y="185" text-anchor="middle" fill="white" font-size="16" font-weight="bold">OUTPUT</text>
+                    
+                    <!-- Arrows -->
+                    <path d="M 150 180 L 190 145" stroke="#22d3ee" stroke-width="4" fill="none"/>
+                    <path d="M 280 145 L 320 145" stroke="#22d3ee" stroke-width="4" fill="none"/>
+                    <path d="M 410 145 L 450 180" stroke="#22d3ee" stroke-width="4" fill="none"/>
+                    
+                    <!-- Attention Symbol -->
+                    <circle cx="300" cy="35" r="28" fill="#fbbf24" opacity="0.9"/>
+                    <text x="300" y="42" text-anchor="middle" fill="white" font-size="14" font-weight="bold">ATTENTION</text>
+                    <path d="M 300 63 L 235 90" stroke="#fbbf24" stroke-width="3" stroke-dasharray="5,5"/>
+                    <path d="M 300 63 L 365 90" stroke="#fbbf24" stroke-width="3" stroke-dasharray="5,5"/>
+                </svg>
+                <p class="image-caption">Arquitectura del Modelo Transformer: Input → Encoder → Decoder → Output</p>
+            </div>
+        </div>
+
+        <!-- CARACTERÍSTICAS PRINCIPALES -->
+        <div class="section-title">CARACTERÍSTICAS DEL TEMA PRINCIPAL</div>
+        
+        <div class="feature-boxes">
+            <div class="feature-box">
+                <h3>📉 EL PROBLEMA (2017)</h3>
+                <p>Para el año 2017, la inteligencia artificial estaba prácticamente estancada. Los modelos de Redes Neuronales Recurrentes (RNN) que se usaban tenían una limitación muy grande: no podían manejar textos largos ni retener el contexto de lo que estaban procesando. Imagínate intentar leer un libro palabra por palabra sin poder recordar lo que acabas de leer hace dos páginas, así funcionaban estos sistemas.</p>
+                <p>Los traductores automáticos daban resultados bastante pobres y poco naturales. Los asistentes de voz como Alexa o Siri solo podían responder a comandos muy específicos que ya estaban preprogramados, no podían mantener una conversación real ni entender contextos complejos. Era como hablar con un robot muy básico que solo sabía responder cosas memorizadas.</p>
+            </div>
+
+            <div class="feature-box">
+                <h3>💡 LA SOLUCIÓN: EL TRANSFORMER</h3>
+                <p>Estos 8 científicos propusieron algo completamente revolucionario: una arquitectura que se basaba ÚNICAMENTE en mecanismos de atención, sin usar nada de las redes recurrentes que todos usaban hasta ese momento. La idea genial fue que en lugar de procesar el texto palabra por palabra de forma secuencial (como leer letra por letra), la máquina ahora podía "ver" y entender todo el contexto de un vistazo.</p>
+                <p>Esto permitió algo increíble: la paralelización. Antes, para procesar una oración, tenías que esperar a que se procesara cada palabra en orden. Ahora, con el Transformer, todas las palabras se podían procesar al mismo tiempo, lo que hacía que todo fuera muchísimo más rápido y eficiente. Además, finalmente la máquina podía entender el contexto global de lo que estaba leyendo, igual que lo hacemos nosotros los humanos.</p>
+            </div>
+
+            <div class="feature-box">
+                <h3>🚀 EL IMPACTO INMEDIATO Y A LARGO PLAZO</h3>
+                <p>Los resultados fueron inmediatos e impresionantes. En las pruebas de traducción de inglés a francés, el modelo Transformer no solo superó a todos los modelos anteriores, sino que en algunos casos sus traducciones eran incluso mejores que las hechas por traductores humanos profesionales. Esto era algo que nadie había logrado antes.</p>
+                <p>Pero el verdadero impacto vino después. Esta arquitectura se convirtió en la base fundamental de absolutamente todo lo que conocemos hoy como IA generativa: GPT (que usa solo la parte del decoder del Transformer), BERT (que usa solo el encoder), ChatGPT, DALL-E para crear imágenes, modelos que generan música, código de programación, videos... Todo parte de esta idea original. Literalmente cambiaron el mundo de la tecnología para siempre.</p>
+            </div>
+        </div>
+
+        <!-- LOS 8 CIENTÍFICOS -->
+        <div class="section-title">👥 LOS 8 PROTAGONISTAS DE ESTA HISTORIA</div>
+        
+        <div class="scientists-grid">
+            <div class="scientist-card">
+                <div class="scientist-number">1</div>
+                <div class="scientist-icon">
+                    <img src="https://images.squarespace-cdn.com/content/v1/62ec2bc76a27db7b37a2b32f/1ef152c9-ecec-419d-984c-64612aae5727/people-in-ai-ashish-vaswani.jpg"
+                        alt="Ashish Vaswani"
+                        class="scientist-photo">
+                </div>
+                <h3>Ashish Vaswani</h3>
+                <p><strong>Rol:</strong> Líder del equipo</p>
+                <p><strong>Contribución:</strong> Co-diseñó e implementó los primeros modelos Transformer junto con Illia.</p>
+                <p><strong>Institución:</strong> Google Brain</p>
+            </div>
+
+            <div class="scientist-card">
+                <div class="scientist-number">2</div>
+                <div class="scientist-icon">
+                    <img src="https://mn2s.com/wp-content/uploads/2024/12/Noam-Shazeer.png"
+                        alt="Noam Shazeer"
+                        class="scientist-photo">
+                </div>
+                <h3>Noam Shazeer</h3>
+                <p><strong>Apodo:</strong> "El Gandalf"</p>
+                <p><strong>Contribución:</strong> Propuso la atención multi-cabeza y las representaciones posicionales.</p>
+                <p><strong>Actualidad:</strong> Fundador de Character.AI (recomprada por Google por $2,700M)</p>
+            </div>
+
+            <div class="scientist-card">
+                <div class="scientist-number">3</div>
+                <div class="scientist-icon">
+                    <img src="https://www.nvidia.com/content/nvidiaGDC/in/en_IN/events/ai-summit/_jcr_content/root/responsivegrid/nv_container_1970673/nv_container_copy/nv_container/nv_image.coreimg.100.1070.jpeg/1725981580753/niki-parmar-featured-800x800.jpeg"
+                        alt="Niki Parmar"
+                        class="scientist-photo">
+                </div>
+                <h3>Niki Parmar</h3>
+                <p><strong>Rol:</strong> Ingeniera de implementación</p>
+                <p><strong>Contribución:</strong> Implementó y evaluó cientos de variantes del modelo original.</p>
+                <p><strong>Institución:</strong> Google Research</p>
+            </div>
+
+            <div class="scientist-card">
+                <div class="scientist-number">4</div>
+                <div class="scientist-icon">
+                    <img src="https://framerusercontent.com/images/eGxXGn6TuV3KwVcPn3K8AlYbU.jpg"
+                        alt="Jakob Uszkoreit"
+                        class="scientist-photo">
+                </div>
+                <h3>Jakob Uszkoreit</h3>
+                <p><strong>Edad:</strong> 24 años en 2017</p>
+                <p><strong>Contribución:</strong> Inició el proyecto y eligió el nombre "Transformer".</p>
+                <p><strong>Origen:</strong> Investigador alemán en Google</p>
+            </div>
+
+            <div class="scientist-card">
+                <div class="scientist-number">5</div>
+                <div class="scientist-icon">
+                    <img src="https://venturecafeglobal.org/wp-content/uploads/sites/16/2025/02/AI-Lilon-Jones.png"
+                        alt="Llion Jones"
+                        class="scientist-photo">
+                </div>
+                <h3>Llion Jones</h3>
+                <p><strong>Rol:</strong> Experimentación e infraestructura</p>
+                <p><strong>Contribución:</strong> Código inicial, inferencia eficiente y visualizaciones del modelo.</p>
+                <p><strong>Institución:</strong> Google Research</p>
+            </div>
+
+            <div class="scientist-card">
+                <div class="scientist-number">6</div>
+                <div class="scientist-icon">
+                    <img src="https://web-summit-avenger.imgix.net/production/avatars/original/4a468fc1311bb6259cd5a7750e6aa370232ab831.png?ixlib=rb-3.4.0&auto=format&fit=crop&crop=faces&w=600&h=600"
+                        alt="Aidan N. Gomez"
+                        class="scientist-photo">
+                </div>
+                <h3>Aidan N. Gomez</h3>
+                <p><strong>Afiliación:</strong> University of Toronto (estudiante)</p>
+                <p><strong>Contribución:</strong> Co-diseñó tensor2tensor que mejoró masivamente los resultados.</p>
+                <p><strong>Actualidad:</strong> Co-fundador de Cohere</p>
+            </div>
+
+            <div class="scientist-card">
+                <div class="scientist-number">7</div>
+                <div class="scientist-icon">
+                    <img src="https://boolan.com/UploadResources/api/1c78fd75670b4f1ab4d48d8e40db572c.png"
+                        alt="Lukasz Kaiser"
+                        class="scientist-photo">
+                </div>
+                <h3>Lukasz Kaiser</h3>
+                <p><strong>Rol:</strong> Optimización y aceleración</p>
+                <p><strong>Contribución:</strong> Trabajó con Aidan en tensor2tensor, acelerando el entrenamiento masivamente.</p>
+                <p><strong>Institución:</strong> Google Brain</p>
+            </div>
+
+            <div class="scientist-card">
+                <div class="scientist-number">8</div>
+                <div class="scientist-icon">
+                    <img src="https://iq.wiki/cdn-cgi/image/width=1920,quality=70/https://ipfs.everipedia.org/ipfs/QmU6jurEokfKfBhMoYnSY4aCekKZUTLgpNvcmrs8saynbv"
+                        alt="Illia Polosukhin"
+                        class="scientist-photo">
+                </div>
+                <h3>Illia Polosukhin</h3>
+                <p><strong>Rol:</strong> Co-diseñador original</p>
+                <p><strong>Contribución:</strong> Junto con Ashish, diseñó los modelos Transformer desde el concepto inicial.</p>
+                <p><strong>Actualidad:</strong> Co-fundador de NEAR Protocol</p>
+            </div>
+        </div>
+
+        <!-- EMPRESAS -->
+        <div class="section-title">EMPRESAS E INSTITUCIONES CLAVE</div>
+        
+        <div class="companies-grid">
+            <div class="company-card">
+                <div class="company-icon">
+                    <img src="https://play-lh.googleusercontent.com/NN8G4Xc03GSv2_Tu-icuoeOwSo1xoZ4ouzUl24fVlwm5OeIAo7gV0zS1dVRWgCay-BU"
+                        alt="Google"
+                        class="company-photo">
+                </div>
+                <h3>Google</h3>
+                <p>Es la empresa donde nació todo. En las oficinas de Google Research y Google Brain fue donde estos 8 científicos desarrollaron el Transformer. Tenían los mejores recursos, el mejor equipo, y la mejor infraestructura. Sin embargo, la ironía es que después perdieron a todos estos talentos porque la burocracia corporativa hacía muy difícil innovar con la velocidad que ellos querían. Ahora Google tiene que competir con startups que usan la tecnología que sus propios empleados inventaron.</p>
+            </div>
+
+            <div class="company-card">
+                <div class="company-icon">
+                    <img src="https://dubai-immo.com/wp-content/uploads/2025/05/open-ai-dubai-adbu-dhabi.jpg"
+                        alt="OpenAI"
+                        class="company-photo">
+                </div>
+                <h3>OpenAI</h3>
+                <p>Fundada por Elon Musk en 2015 como un contrapeso a Google, OpenAI fue una de las primeras empresas en realmente entender y aprovechar el potencial del Transformer. Mientras Google estaba atrapada en sus procesos internos, OpenAI se movió rápido y creó GPT-2, GPT-3, DALL-E y finalmente ChatGPT, que literalmente cambió el mundo. Demostraron que una organización más ágil y enfocada podía superar a gigantes tecnológicos usando la misma tecnología base.</p>
+            </div>
+
+            <div class="company-card">
+                <div class="company-icon">
+                    <img src="https://cdn.sanity.io/images/q0fo807q/production/8f6f5693f1944e5cf1c45e5e63f7458fb766eab7-683x683.svg?w=96&h=96&q=100&fit=max&auto=format"
+                        alt="Character.AI"
+                        class="company-photo">
+                </div>
+                <h3>Character.AI</h3>
+                <p>Startup fundada por Noam Shazeer, uno de los 8 autores originales del paper del Transformer. La empresa se especializa en crear personajes de IA con los que puedes tener conversaciones naturales. Lo más impresionante es que Google la recompró por la astronómica suma de $2,700 millones de dólares. Básicamente, Google tuvo que pagar miles de millones para recuperar a uno de los científicos que había dejado ir por su burocracia.</p>
+            </div>
+
+            <div class="company-card">
+                <div class="company-icon">
+                    <img src="https://dashboard.cohere.com/images/share.png"
+                        alt="Cohere"
+                        class="company-photo">
+                </div>
+                <h3>Cohere</h3>
+                <p>Co-fundada por Aidan N. Gomez, otro de los 8 autores originales. Cohere se enfoca en proporcionar modelos de lenguaje grandes para empresas, compitiendo directamente con OpenAI. Es una demostración perfecta de cómo los creadores originales del Transformer están ahora construyendo sus propias empresas basadas en su invención, en lugar de quedarse en Google donde todo comenzó.</p>
+            </div>
+
+            <div class="company-card">
+                <div class="company-icon">
+                    <img src="https://s3.coinmarketcap.com/static-gravity/image/ef3ad80e423a4449ab8e961b0d1edea4.png"
+                        alt="NEAR Protocol"
+                        class="company-photo">
+                </div>
+                <h3>NEAR Protocol</h3>
+                <p>Plataforma de blockchain co-fundada por Illia Polosukhin, otro de los autores originales del Transformer. Aunque NEAR no está directamente relacionada con IA, demuestra la diversidad de intereses y habilidades de estos científicos. Polosukhin aplicó su experiencia en sistemas distribuidos y procesamiento de información para crear una de las plataformas de blockchain más eficientes que existen.</p>
+            </div>
+        </div>
+
+        <!-- IMPACTO Y LEGADO -->
+        <div class="impact-section">
+            <h2>🌟 IMPACTO Y LEGADO DEL TRANSFORMER</h2>
+            <div class="impact-list">
+                <div class="impact-item">
+                    <strong>Arquitectura Fundamental de Toda la IA Moderna:</strong> El Transformer no es solo una tecnología más, es literalmente LA tecnología que sostiene todo el ecosistema actual de inteligencia artificial. Cada modelo de lenguaje grande (LLM) que existe hoy, sin excepción, está basado en esta arquitectura. GPT, Claude, Gemini, LLaMA... todos son Transformers en su corazón.
+                </div>
+                
+                <div class="impact-item">
+                    <strong>Paralelización que Cambió Todo:</strong> Antes del Transformer, entrenar modelos grandes era extremadamente lento porque todo tenía que procesarse secuencialmente. El Transformer permitió procesar todo en paralelo, lo que significó que lo que antes tomaba meses ahora podía hacerse en días. Esto abrió la puerta a entrenar modelos cada vez más grandes y poderosos.
+                </div>
+                
+                <div class="impact-item">
+                    <strong>Más Allá del Texto:</strong> Aunque originalmente se diseñó para traducción de texto, el Transformer resultó ser increíblemente versátil. Ahora se usa para generar imágenes (DALL-E, Midjourney, Stable Diffusion), crear música, escribir código de programación, generar videos, y prácticamente cualquier tarea que involucre procesar información estructurada.
+                </div>
+                
+                <div class="impact-item">
+                    <strong>Democratización de la IA:</strong> Cuando estos científicos dejaron Google, fundaron startups ágiles que pudieron mover la tecnología al mercado mucho más rápido que los gigantes tecnológicos. OpenAI, Character.AI, Cohere y otras empresas hicieron que esta tecnología fuera accesible para millones de personas, no solo para grandes corporaciones.
+                </div>
+                
+                <div class="impact-item">
+                    <strong>Diversidad Global en Acción:</strong> De los 8 autores, 6 nacieron fuera de Estados Unidos (Alemania, Ucrania, India, Polonia, Canadá, Reino Unido). Esto demuestra que la innovación tecnológica más importante de la década fue resultado de la colaboración internacional y la diversidad de perspectivas. No fue el trabajo de un solo país o cultura.
+                </div>
+                
+                <div class="impact-item">
+                    <strong>Colaboración Igualitaria:</strong> Un detalle hermoso de este proyecto es que los 8 autores contribuyeron de forma relativamente equitativa. De hecho, el orden en que aparecen sus nombres en el paper fue determinado aleatoriamente, porque todos consideraron que sus contribuciones eran igualmente importantes. No hubo un "jefe" que se llevara todo el crédito.
+                </div>
+                
+                <div class="impact-item">
+                    <strong>De la Oscuridad a la Gloria:</strong> En diciembre de 2017, su presentación en NeurIPS fue solo un póster modesto entre cientos. Casi nadie les prestó atención ese día. Para 2020, ese mismo paper se había convertido en el más citado e influyente en toda la investigación de IA. Es una historia que demuestra que a veces las ideas más revolucionarias no son reconocidas inmediatamente.
+                </div>
+                
+                <div class="impact-item">
+                    <strong>Cambio en la Industria Tecnológica:</strong> Estos científicos de Google demostró algo importante: las grandes corporaciones no siempre son el mejor lugar para innovar. A veces, la burocracia y los procesos lentos de las empresas gigantes hacen que las startups pequeñas y ágiles puedan moverse más rápido y tener mayor impacto con las mismas tecnologías.
+                </div>
+            </div>
+        </div>
+
+        <!-- REFERENCIAS BIBLIOGRÁFICAS -->
+        <div class="references-section">
+            <h2>REFERENCIAS BIBLIOGRÁFICAS (Formato APA)</h2>
+            
+            <div class="reference-item">
+                DotCSV. (2024). <em>Cómo 8 CIENTÍFICOS ANÓNIMOS inventaron la IA Generativa</em> [Video]. YouTube. https://www.youtube.com/watch?v=HX8IMpnESxk
+            </div>
+
+            <div class="reference-item">
+                Google AI Blog. (2017). <em>Transformer: A novel neural network architecture for language understanding</em>. Google AI. https://ai.googleblog.com/2017/08/transformer-novel-neural-network.html
+            </div>
+
+            <div class="reference-item">
+                Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, Ł., & Polosukhin, I. (2017). Attention is all you need. <em>Advances in Neural Information Processing Systems, 30</em>, 5998-6008. https://arxiv.org/abs/1706.03762
+            </div>
+        </div>
+
+        <!-- CONCLUSIÓN -->
+        <div class="conclusion-box">
+            <h2>💡 CONCLUSIÓN Y FRASE CLAVE</h2>
+            <p class="quote">"Attention Is All You Need"</p>
+            <p>Esta frase tan simple, inspirada en la canción de Los Beatles "All You Need Is Love", resultó ser profética. Con solo el mecanismo de atención, sin necesidad de las complejas arquitecturas recurrentes que todos usaban, estos 8 científicos cambiaron completamente el mundo de la inteligencia artificial.</p>
+            <p style="margin-top: 20px;">Lo que comenzó como un póster modesto en una conferencia en 2017 se convirtió en la base tecnológica de la revolución de IA más importante de la historia. Una revolución que continúa desarrollándose hoy, transformando la forma en que trabajamos, creamos, aprendemos y nos comunicamos.</p>
+        </div>
+    </div>
+</body>
+</html>
